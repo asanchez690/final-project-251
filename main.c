@@ -1,7 +1,26 @@
 #include <stdio.h>
+#include "FrameWork.h"
+
+
+
+
+
 
 int main(void)
 {
+
+Student arrayOfStudents[MAX_STUDENTS]; //this array currently fits 100 students
+//this array acts as our temp storage to later write to file
+
+
+//Depending on the complexity of our gradebook we can choose to load an existing file
+//Or for simplicity we can just create a new file each time we run this program
+
+
+
+
+
+
 //1 Add
 //2 List
 //3 Sort
