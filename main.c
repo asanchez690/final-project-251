@@ -1,96 +1,56 @@
-//
-//  main.c
-//  Final Project
-//
-//  Created by Anthony Rodriguez on 11/17/25.
-//
-
 #include <stdio.h>
-#include "stats.h"
-#include "model.h"
 
-/*
- * This function prints all statistics for the gradebook
- * It expects an array of Student and the total count
- */
-void stats_print(const Student *students, int count) {
-    if (count <= 0) {
-        printf("No students in gradebook\n");
-        return;
-    }
+int main(void)
+{
+//1 Add
+//2 List
+//3 Sort
+//4 Save and exit
+//else invalid input
+int input =0;
 
-    double class_avg = stats_class_average(students, count);
-    int max_index = stats_index_of_max_avg(students, count);
-    int min_index = stats_index_of_min_avg(students, count);
 
-    printf("Students: %d\n", count);
-    printf("Class average: %.2f\n", class_avg);
+do
+{
+  printf("-----GradeBook-----\n");
+  printf("What would you like to do?\n");
+  printf("1. Add Student\n");
+  printf("2. Delete Student\n");
+  printf("3. List Students\n");
+  printf("4. Save and Exit\n");
+  scanf("%d" ,&input);
 
-    if (max_index >= 0) {
-        const Student *s = &students[max_index];
-        printf("Highest average: %.2f (ID %d, %s)\n",
-               s->average, s->id, s->name);
-    }
+  switch(input)
+  {
+    case 1:
+      //function to add a student
+      printf("Works\n");
+      break;
+    case 2:
+      //function to delete a student
+      printf("Works\n");
+      break;
+      
+    case 3:
+      //function to list all students in gradebook
+      printf("Works\n");
+      break;
+    case 4:
+      //function to possibly return file with students
+      printf("Works\n");
+      break;
+    default:
+      printf("Error: Invalid Input!\n\n");
+      break;
+  }
 
-    if (min_index >= 0) {
-        const Student *s = &students[min_index];
-        printf("Lowest average: %.2f (ID %d, %s)\n",
-               s->average, s->id, s->name);
-    }
-}
+} while (!(input==4));
 
-/*
- * Compute the class average of student averages
- */
-double stats_class_average(const Student *students, int count) {
-    if (count <= 0) {
-        return 0.0;
-    }
 
-    double total = 0.0;
 
-    for (int i = 0; i < count; i++) {
-        total += students[i].average;
-    }
 
-    return total / count;
-}
 
-/*
- * Return index of student with highest average
- */
-int stats_index_of_max_avg(const Student *students, int count) {
-    if (count <= 0) {
-        return -1;
-    }
 
-    int max_index = 0;
-
-    for (int i = 1; i < count; i++) {
-        if (students[i].average > students[max_index].average) {
-            max_index = i;
-        }
-    }
-
-    return max_index;
-}
-
-/*
- * Return index of student with lowest average
- */
-int stats_index_of_min_avg(const Student *students, int count) {
-    if (count <= 0) {
-        return -1;
-    }
-
-    int min_index = 0;
-
-    for (int i = 1; i < count; i++) {
-        if (students[i].average < students[min_index].average) {
-            min_index = i;
-        }
-    }
-
-    return min_index;
+  return 0;
 }
 
