@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "FrameWork.h"
 
 
 int main(void)
@@ -10,6 +11,8 @@ int main(void)
 //else invalid input
 int input =0;
 
+Student arr[MAX_STUDENTS];
+int currentIndex =0;
 
 
 do
@@ -26,6 +29,8 @@ do
   {
     case 1:
       //function to add a student
+      addStudent(arr, currentIndex);
+      currentIndex++;
       printf("Works\n");
       break;
     case 2:
@@ -35,6 +40,7 @@ do
       
     case 3:
       //function to list all students in gradebook
+      listStudents(arr,currentIndex);
       printf("Works\n");
       break;
     case 4:
