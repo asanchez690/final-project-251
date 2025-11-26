@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "FrameWork.h"
-
+#include "stats.h"
 
 int main(void)
 {
