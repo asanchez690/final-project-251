@@ -29,13 +29,13 @@ void stats_print(const Student *students, int count) {
     if (max_index >= 0) {
         const Student *s = &students[max_index];
         printf("Highest average: %.2f (ID %d, %s)\n",
-               s->average, s->id, s->name);
+               s->averageScore, s->idNum, s->name);
     }
 
     if (min_index >= 0) {
         const Student *s = &students[min_index];
         printf("Lowest average: %.2f (ID %d, %s)\n",
-               s->average, s->id, s->name);
+               s->averageScore, s->idNum, s->name);
     }
 }
 
@@ -50,7 +50,7 @@ double stats_class_average(const Student *students, int count) {
     double total = 0.0;
 
     for (int i = 0; i < count; i++) {
-        total += students[i].average;
+        total += students[i].averageScore;
     }
 
     return total / count;
@@ -67,7 +67,7 @@ int stats_index_of_max_avg(const Student *students, int count) {
     int max_index = 0;
 
     for (int i = 1; i < count; i++) {
-        if (students[i].average > students[max_index].average) {
+        if (students[i].averageScore > students[max_index].averageScore) {
             max_index = i;
         }
     }
@@ -86,7 +86,7 @@ int stats_index_of_min_avg(const Student *students, int count) {
     int min_index = 0;
 
     for (int i = 1; i < count; i++) {
-        if (students[i].average < students[min_index].average) {
+        if (students[i].averageScore < students[min_index].averageScore) {
             min_index = i;
         }
     }
