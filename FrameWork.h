@@ -22,11 +22,11 @@ typedef struct //sort of acts like an object in java, defining the structure of 
 
 
 //implement these methods 
-void addStudent(Student arr[], int currentIndex );
+void addStudent(Student arr[], int *currentIndex );
 
 void deleteStudent();
 
-void listStudents(Student arr[], int currentIndex);
+void listStudents(Student arr[], int *currentIndex);
 
 void sortGradebook();
 
