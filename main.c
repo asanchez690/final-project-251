@@ -5,9 +5,10 @@
 int main(void)
 {
 //1 Add
-//2 List
-//3 Sort
-//4 Save and exit
+//2 Delete
+//3 List
+//4 Show statistics
+//5 Save & quit
 //else invalid input
 int input =0;
 
@@ -22,7 +23,8 @@ do
   printf("1. Add Student\n");
   printf("2. Delete Student\n");
   printf("3. List Students\n");
-  printf("4. Save and Exit\n");
+  printf("4. Show Statistics\n");
+  printf("5. Save and Exit\n");
   scanf("%d" ,&input);
 
   switch(input)
@@ -37,26 +39,22 @@ do
       //function to delete a student
       printf("Works\n");
       break;
-      
     case 3:
       //function to list all students in gradebook
       listStudents(arr,currentIndex);
-      printf("Works\n");
       break;
     case 4:
-      //function to possibly return file with students
-      printf("Works\n");
+      stats_print(arr, currentIndex);
+      break;
+    case 5:
+      printf("Exiting...\n");
       break;
     default:
       printf("Error: Invalid Input!\n\n");
       break;
   }
 
-} while (!(input==4));
-
-
-
-
+} while (!(input==5));
 
 
   return 0;
