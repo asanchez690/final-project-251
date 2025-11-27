@@ -8,7 +8,7 @@
 #ifndef stats_h
 #define stats_h
 
-#include "model.h"
+#include "FrameWork.h"
 void stats_print(const Student *students, int count);
 double stats_class_average(const Student*students,int count);
 int stats_index_of_max_avg(const Student*students,int count);
