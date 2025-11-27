@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include "stats.h"
-#include "model.h"
+#include "FrameWork.h"
 
 /*
  * This function prints all statistics for the gradebook
