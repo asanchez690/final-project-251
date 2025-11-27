@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "FrameWork.h"
 #include "stats.h"
+#include "list.h"
 
 int main(void)
 {
@@ -10,10 +11,11 @@ int main(void)
 //4 Show statistics
 //5 Save & quit
 //else invalid input
-int input =0;
+  int input =0;
+  init_list();
 
-Student arr[MAX_STUDENTS];
-int currentIndex =0;
+//Student arr[MAX_STUDENTS];
+//int currentIndex =0;
 
 
 do
@@ -31,9 +33,7 @@ do
   {
     case 1:
       //function to add a student
-      addStudent(arr, currentIndex);
-      currentIndex++;
-      printf("Works\n");
+      addStudent();
       break;
     case 2:
       //function to delete a student
@@ -41,10 +41,10 @@ do
       break;
     case 3:
       //function to list all students in gradebook
-      listStudents(arr,currentIndex);
+      listStudents();
       break;
     case 4:
-      stats_print(arr, currentIndex);
+      stats_print(student_list, student_count);
       break;
     case 5:
       printf("Exiting...\n");
