@@ -4,3 +4,9 @@ To ensure proper functioning of this application please ensure to download all f
 Once downloaded, please make sure that files are placed in the correct folder on your computer.
 
 If operating on macOS, open the terminal, and run the file using gcc. 
+
+Once running, add a whole integer when prompted for student ID.
+Then, add the student's name when prompted.
+Finally, add the student’s overall score.
+All of this information will be saved and can be brought back up by selecting option 3 in the main menu.
+
