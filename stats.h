@@ -8,7 +8,7 @@
 #ifndef stats_h
 #define stats_h
 
-#include "FrameWork.h"
+#include "Framework.h"
 
 /* Print statistics for the gradebook */
 void stats_print(const Student *students, int count);
