@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "stats.h"
-#include "FrameWork.h"
+#include "Framework.h"
 
 /*
  * Print all statistics for the gradebook.
