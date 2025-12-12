@@ -7,10 +7,7 @@ int main(void)
 {
     int input = 0;
 
-    /*
-     * Initialize the list so student_count starts at zero.
-     * This lets add, list, delete, and stats work properly.
-     */
+    // Make sure the list starts empty
     init_list();
 
     do {
@@ -21,14 +18,24 @@ int main(void)
         printf("3. List Students\n");
         printf("4. Show Statistics\n");
         printf("5. Save and Exit\n");
-        scanf("%d", &input);
+        printf("Enter choice: ");
+
+        if (scanf("%d", &input) != 1) {
+            // bad input, clear stdin
+            int ch;
+            while ((ch = getchar()) != '\n' && ch != EOF) {
+                /* discard */
+            }
+            printf("Error: Invalid Input!\n\n");
+            input = 0;
+            continue;
+        }
 
         switch (input) {
             case 1:
                 addStudent();
                 break;
             case 2:
-                /* Now calls deleteStudent which uses remove_from_list */
                 deleteStudent();
                 break;
             case 3:
@@ -42,9 +49,11 @@ int main(void)
                 break;
             default:
                 printf("Error: Invalid Input!\n\n");
+                break;
         }
 
     } while (input != 5);
 
     return 0;
 }
+
