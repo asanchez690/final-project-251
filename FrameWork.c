@@ -1,9 +1,30 @@
 
-
 #include <stdio.h>
 #include <string.h>
 #include "Framework.h"
 #include "list.h"
+
+/*
+ * Internal helper to sort students by last name, then first name.
+ */
+static void sortStudentsByName(void)
+{
+    for (int i = 0; i < student_count - 1; i++) {
+        for (int j = 0; j < student_count - i - 1; j++) {
+
+            Student *a = &student_list[j];
+            Student *b = &student_list[j + 1];
+
+            int cmp = strcmp(a->lastName, b->lastName);
+            if (cmp > 0 ||
+               (cmp == 0 && strcmp(a->firstName, b->firstName) > 0)) {
+                Student tmp = *a;
+                *a = *b;
+                *b = tmp;
+            }
+        }
+    }
+}
 
 /*
  * Adds a new student to the gradebook.
@@ -21,16 +42,21 @@ void addStudent(void)
     printf("Enter ID Number: ");
     scanf("%d", &s1.idNum);
 
-    printf("Enter name of Student: ");
-    scanf("%49s", s1.name);
+    printf("Enter first name of Student: ");
+    scanf("%49s", s1.firstName);
+
+    printf("Enter last name of Student: ");
+    scanf("%49s", s1.lastName);
 
     printf("Enter the Student's Overall Grade: ");
     scanf("%f", &s1.averageScore);
 
-    if (add_to_list(s1) == 0) {
-        printf("Student added successfully!\n");
+    int rc = add_to_list(s1);
+
+    if (rc == 0) {
+        printf("\nStudent added successfully!\n");
     } else {
-        printf("Error adding student!\n");
+        printf("\nError adding student!\n");
     }
 }
 
@@ -44,24 +70,31 @@ void listStudents(void)
         return;
     }
 
-    printf("\n=== STUDENT LIST (%d students) ===\n", student_count);
+    // keep the list organized
+    sortStudentsByName();
 
+    printf("\n=== STUDENT LIST (%d students) ===\n\n", student_count);
+
+    // header row
+    printf("%-6s %-15s %-15s %-7s\n",
+           "ID", "Last", "First", "Grade");
+    printf("===========================================\n");
+
+    // each student
     for (int i = 0; i < student_count; i++) {
-        printf("ID: %d, Name: %s, Grade: %.2f\n",
+        printf("%-6d %-15s %-15s %-7.2f\n",
                student_list[i].idNum,
-               student_list[i].name,
+               student_list[i].lastName,
+               student_list[i].firstName,
                student_list[i].averageScore);
     }
 
-    printf("=================================\n\n");
+    printf("===========================================\n\n");
 }
 
 /*
  * Deletes a student by ID.
- * This function was added to complete the delete feature.
- *
- * It calls remove_from_list from list.c.
- * If the ID is found, it gets removed.
+ * Uses remove_from_list from list.c.
  */
 void deleteStudent(void)
 {
@@ -81,4 +114,9 @@ void deleteStudent(void)
     } else {
         printf("Student with that ID was not found.\n");
     }
+}
+
+void sortGradebook(void)
+{
+    sortStudentsByName();
 }
